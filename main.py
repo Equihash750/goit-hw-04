@@ -7,5 +7,3 @@ print(f"Загальна сума заробітної плати: {total}, Се
 cats_info = get_cats_info("homework/cats/cats_info.txt")
 print(cats_info)
 
-#if __name__ == '__main__':
-    #main()
