@@ -1,33 +1,39 @@
 from bot_parse import *
 
+
 def main():
     contacts = {}
-    print("Добро пожаловать! (Для получения списка доступных команд введите 'func')")
+    print("Добро пожаловать в ассистент! (Введите 'func' для помощи)")
+
     while True:
-        user_input = input("Введите вашу команду: ")
-        command, *args = parse_input(user_input)
+        user_input = input("Введите команду: ")
+        command, args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            print("Досвидания")
+            print("До свидания! Хорошего дня.")
             break
 
         elif command == "hello":
-            print("Чем я могу вам помочь? ")
+            print("Чем я могу вам помочь?")
+
         elif command == "func":
-            print(func())
+            print(get_help())
+
         elif command == "add":
             print(add_contact(args, contacts))
+
         elif command == "change":
             print(change_contact(args, contacts))
-        elif command == "all":
-            for key, value in contacts.items():
-                print(f"{key}: {value}")
+
         elif command == "phone":
-            for key, value in contacts.items():
-                if key in args:
-                    print(f"{value}")
+            print(show_phone(args, contacts))
+
+        elif command == "all":
+            print(get_all_contacts(contacts))
+
         else:
-            print("Неверная команда")
+            print("Неверная команда. Введите 'func', чтобы увидеть список доступных команд.")
+
 
 if __name__ == "__main__":
     main()
